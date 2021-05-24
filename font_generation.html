@@ -9,10 +9,13 @@
       fill: #000;
       display: block;
     }
+    #generateButton:focus {
+      background-color:rgb(64, 64, 64);
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="../flubber/build/flubber.min.js"></script>
+  <script src="flubber/build/flubber.min.js"></script>
   
 
   <!-- Bootstrap CSS -->
@@ -63,13 +66,19 @@
 
     <hr>
 
-
-  <!-- Form -->
+    <!-- Form -->
     <div class="row">
 
       <!-- Input textarea for the ending SVG paths -->
       <div class="col-sm text-center">
-        <h4>Input: Enter SVG paths [info modal]</h4>
+        <h4>Input: SVG paths
+          <button type="button" class="btn" data-toggle="modal" data-target="#infoModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+          </svg>
+          </button>
+        </h4>
         <textarea id="inputTextArea" name="Text1" cols="50" rows="5"></textarea>
       </div>
 
@@ -79,7 +88,8 @@
           <div class="row justify-content-sm-center form-group">
             <h4 id="outputPercentage" class="text-center"></h4>
             <input type="range" class="form-range" id="selectedPercentage" min="0" max="100" step="1">
-            <a id="generateButton" class="btn btn-primary mt-4">Generate</a>
+            <button id="generateButton" class="btn btn-primary mt-4">Generate</button>
+            Be patient. Generating might take a while.
           </div>
         </form>
       </div>
@@ -101,10 +111,56 @@
 
     </div>
   </div>
-<!-- <div id="test">
-  boe
-</div> -->
 
+  
+<!-- Info Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+          </svg>
+          Input SVG paths
+        </h5>
+      </div>
+      <div class="modal-body">
+        The input here expects a sequence of SVG paths. Because the entire Habbakuk font is changed, it expects paths for the following 27 glyphs (in this order):
+        <ul>  
+          <li>Alef</li>
+          <li>Ayin</li>
+          <li>Bet</li>
+          <li>Dalet</li>
+          <li>Gimel</li>
+          <li>He</li>
+          <li>Het</li>
+          <li>Kaf-final</li>
+          <li>Kaf</li>
+          <li>Lamed</li>
+          <li>Mem-medial</li>
+          <li>Mem</li>
+          <li>Nun-final</li>
+          <li>Nun-medial</li>
+          <li>Pe-final</li>
+          <li>Pe</li>
+          <li>Qof</li>
+          <li>Resh</li>
+          <li>Samekh</li>
+          <li>Shin</li>
+          <li>Taw</li>
+          <li>Tet</li>
+          <li>Tsadi-final</li>
+          <li>Tsadi-medial</li>
+          <li>Waw</li>
+          <li>Yod</li>
+          <li>Zayin</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Scripts -->
@@ -180,8 +236,6 @@
       interpolator = flubber.interpolate(habbakukPaths[0], svgPath);
       $('#flubberOutputPath').attr("d", interpolator(.5));
     });
-    
-
 
     // Actions to be performed when clicking on "Generate"
     generateButton.onclick = function() {
@@ -197,6 +251,8 @@
         inputPaths.push(svgPath);
         // document.getElementById("test").innerHTML = svgPath;
       });
+
+      
 
       // document.getElementById("test").innerHTML = "inputPaths length = " + inputPaths.length + " habbakukPaths length = " + habbakukPaths.length;
 
@@ -238,3 +294,9 @@
 
 
 </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
