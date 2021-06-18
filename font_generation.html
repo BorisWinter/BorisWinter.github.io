@@ -229,7 +229,7 @@
  
     // Display starting SVG path
     var interpolator;
-    $('#habbakukExamplePath').attr("d", habbakukPaths[0]);
+    $('#habbakukExamplePath').attr("d", habbakukPaths[3]);
     
 
     // Slider updates
@@ -257,7 +257,7 @@
       // document.getElementById("test").innerHTML = svgPath;
       $('#endingFontExamplePath').attr("d", svgPath);
 
-      interpolator = flubber.interpolate(habbakukPaths[0], svgPath);
+      interpolator = flubber.interpolate(habbakukPaths[3], svgPath);
       $('#flubberOutputPath').attr("d", interpolator(.5));
     });
     
