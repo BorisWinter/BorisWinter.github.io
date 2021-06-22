@@ -351,10 +351,10 @@ var habbakukPaths = [
       // Create an interpolator for each Habbakuk path and its corresponding path from the textarea
       habbakukPaths.forEach((habbakuk, key) => {
         inputPaths.forEach((input, key2) => {
-            const object = { a: 0, b: 20, c: 30, d: 40, e: 50, f: 60, g: 70, h: 80, i: 90 };          
+            const object = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8, i: 9 };          
             for (const property in object) {
                 var tmpTnterpolator = flubber.interpolate(habbakukPaths[key], inputPaths[key2]);
-                outputPaths[key+key2] = tmpTnterpolator(object[property] / 100);
+                outputPaths[key+key2+property-1] = tmpTnterpolator(object[property] / 10);
             }
             // $('#endingFontExamplePath').attr("d", tmpTnterpolator(slider.value / 100)); 
         });
