@@ -24,7 +24,7 @@
 
     <!-- title -->
     <div class="row mb-2 mt-4">
-      <h1>Habbakuk-lik font Generation</h1>
+      <h1>Habbakuk-like font Generation</h1>
     </div>
 
     <hr>
@@ -364,11 +364,11 @@ var zayinPaths = [
         zayinPaths.forEach((input, key2) => {
             if(habbakuk != value){
             // const object = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8, i: 9 };
-                const values = [2, 4, 6, 8];      
-                values.forEach((value, key3) => {
-                    var tmpTnterpolator = flubber.interpolate(zayinPaths[key], zayinPaths[key2]);
-                    outputPaths.push(tmpTnterpolator(value / 10));
-                });
+                // const values = [2, 4, 6, 8];      
+                // values.forEach((value, key3) => {
+                var tmpTnterpolator = flubber.interpolate(zayinPaths[key], zayinPaths[key2]);
+                outputPaths.push(tmpTnterpolator(slider.value / 100));
+                // });
             }
             
             // $('#endingFontExamplePath').attr("d", tmpTnterpolator(slider.value / 100)); 
