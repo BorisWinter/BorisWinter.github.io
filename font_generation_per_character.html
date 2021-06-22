@@ -24,7 +24,7 @@
 
     <!-- title -->
     <div class="row mb-2 mt-4">
-      <h1>Habbakuk-like font Generation</h1>
+      <h1>Habbakuk-lik font Generation</h1>
     </div>
 
     <hr>
@@ -355,7 +355,7 @@ var habbakukPaths = [
             const values = [2, 4, 6, 8];      
             values.forEach((value, key3) => {
                 var tmpTnterpolator = flubber.interpolate(habbakukPaths[key], inputPaths[key2]);
-                outputPaths[key+key2+key3] = tmpTnterpolator(value / 10);
+                outputPaths.push(tmpTnterpolator(value / 10));
             });
             // $('#endingFontExamplePath').attr("d", tmpTnterpolator(slider.value / 100)); 
         });
