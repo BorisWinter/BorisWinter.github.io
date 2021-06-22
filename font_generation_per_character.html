@@ -24,7 +24,7 @@
 
     <!-- title -->
     <div class="row mb-2 mt-4">
-      <h1>Habbakuk-lik font Generation</h1>
+      <h1>Habbakuk-like font Generation</h1>
     </div>
 
     <hr>
@@ -417,13 +417,13 @@ var daletPaths = [
       // document.getElementById("test").innerHTML = "inputPaths length = " + inputPaths.length + " habbakukPaths length = " + habbakukPaths.length;
 
       // Create an interpolator for each Habbakuk path and its corresponding path from the textarea
-      pePaths.forEach((habbakuk, key) => {
-        pePaths.forEach((input, key2) => {
+      kafFinalPaths.forEach((habbakuk, key) => {
+        kafFinalPaths.forEach((input, key2) => {
             if(key != key2){
             // const object = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8, i: 9 };
                 const values = [1, 2, 3, 4];      
                 values.forEach((value, key3) => {
-                var tmpTnterpolator = flubber.interpolate(pePaths[key], pePaths[key2]);
+                var tmpTnterpolator = flubber.interpolate(kafFinalPaths[key], kafFinalPaths[key2]);
                 outputPaths.push(tmpTnterpolator(value / 10));
                 });
             }
