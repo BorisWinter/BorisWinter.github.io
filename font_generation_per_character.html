@@ -319,13 +319,13 @@ var habbakukPaths = [
       var inputArea = document.getElementById("inputTextArea").value;
       const regex = /d="([^"]*)"/g;
       var arr = inputArea.match(regex);
-      svgPath = arr[3].replace(/d="/g, '').replace(/"/g, '');
+      svgPath = arr[0].replace(/d="/g, '').replace(/"/g, '');
 
       // Update the example SVG to the first SVG path (which should be the same character as the habbakuk example)
       // document.getElementById("test").innerHTML = svgPath;
       $('#endingFontExamplePath').attr("d", svgPath);
 
-      interpolator = flubber.interpolate(habbakukPaths[3], svgPath);
+      interpolator = flubber.interpolate(habbakukPaths[0], svgPath);
       $('#flubberOutputPath').attr("d", interpolator(.5));
     });
     
